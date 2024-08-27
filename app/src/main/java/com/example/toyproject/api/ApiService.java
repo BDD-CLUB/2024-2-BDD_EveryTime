@@ -8,5 +8,5 @@ import retrofit2.http.POST;
 
 public interface ApiService {
     @POST("/api/mail/mail-send")
-    Call<Boolean> sendVerificationCode(@Body EmailRequest emailRequest);
+    Call<Void> sendVerificationCode(@Body EmailRequest emailRequest);
 }
