@@ -57,6 +57,7 @@
                 android:layout_marginBottom="6dp"
                 android:text="본인 성명" />
             <EditText
+                android:id="@+id/registerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
@@ -86,17 +87,37 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/border_layout"
-                android:hint="이메일"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="12dp"
-                android:textColorHint="#858585"
-                android:textSize="16sp" />
+                >
+                <EditText
+                    android:id="@+id/registerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_layout"
+                    android:hint="이메일"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="12dp"
+                    android:textColorHint="#858585"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/sendEmailCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메일 인증"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="50dp"
+                    android:textColor="#737373"
+                    android:background="@drawable/verify_button"
+                    />
+
+            </FrameLayout>
+
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,6 +138,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/registerEmailCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
@@ -147,6 +169,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/registerPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="50dp"
