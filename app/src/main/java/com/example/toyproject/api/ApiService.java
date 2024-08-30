@@ -1,6 +1,8 @@
 package com.example.toyproject.api;
 
 import com.example.toyproject.model.EmailRequest;
+import com.example.toyproject.model.LoginRequest;
+import com.example.toyproject.model.LoginResponse;
 import com.example.toyproject.model.SignUpRequest;
 import com.example.toyproject.model.VerifyEmailRequest;
 
@@ -20,5 +22,5 @@ public interface ApiService {
     Call<Boolean> verifyEmailCode(@Body VerifyEmailRequest verifyEmailRequest);
 
     @POST("/api/auth/login")
-    Call<>
+    Call<Void> login(@Body LoginRequest loginRequest);
 }

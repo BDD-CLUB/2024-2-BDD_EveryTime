@@ -41,6 +41,7 @@
             />
 
         <EditText
+            android:id="@+id/loginId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
@@ -52,6 +53,7 @@
             android:textSize="16sp"
             android:textColorHint="#858585" />
         <EditText
+            android:id="@+id/loginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
