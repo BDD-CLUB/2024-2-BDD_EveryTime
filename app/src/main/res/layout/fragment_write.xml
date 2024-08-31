@@ -45,7 +45,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <Button
-                    android:id="@+id/post"
+                    android:id="@+id/postButton"
                     android:layout_width="65dp"
                     android:layout_height="35dp"
                     android:text="완료"
@@ -66,7 +66,7 @@
                 android:orientation="vertical"
                 >
                 <EditText
-                    android:id="@+id/title"
+                    android:id="@+id/postTitle"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="제목"
@@ -82,10 +82,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#EFEFEF"
-                    app:layout_constraintTop_toBottomOf="@+id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/postTitle"
                     android:layout_marginTop="5dp"
                     />
                 <EditText
+                    android:id="@+id/postContent"
                     android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
