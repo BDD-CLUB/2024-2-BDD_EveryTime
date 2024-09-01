@@ -2,13 +2,16 @@ package com.example.toyproject.api;
 
 import com.example.toyproject.model.EmailRequest;
 import com.example.toyproject.model.LoginRequest;
-import com.example.toyproject.model.LoginResponse;
+import com.example.toyproject.model.PostListResponse;
 import com.example.toyproject.model.PostRequestBody;
 import com.example.toyproject.model.SignUpRequest;
 import com.example.toyproject.model.VerifyEmailRequest;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -28,4 +31,13 @@ public interface ApiService {
 
     @POST("/api/board/post")
     Call<Void> post(@Header("Authorization") String token, @Body PostRequestBody postRequestBody);
+
+    @GET("/api/board/lists")
+    Call<List<PostListResponse>> getPostList();
+
+    @POST("api/auth/logout")
+    Call<Void> logOut(@Header("Authorization") String token);
+
+    @GET("/api/mypage/profile")
+    Call<Void> myProfile(@Header("Authorization") String token);
 }

@@ -2,7 +2,6 @@ package com.example.toyproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,13 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.toyproject.api.ApiService;
 import com.example.toyproject.api.RetrofitClient;
 import com.example.toyproject.model.LoginRequest;
-import com.example.toyproject.model.LoginResponse;
 import com.example.toyproject.utils.PreferenceManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 

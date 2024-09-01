@@ -105,86 +105,14 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="20dp"
-                android:paddingVertical="10dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="3dp"
-                    android:text="게시글제목게시글제목게시글제목게시..."
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="예시글예시글예시글예시글예시글예시글예시글예시글예시글예시글예시글예시글..."
-                    android:textColor="#6A6A6A"
-                    android:textSize="13sp"
-                    />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp"
-                    >
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/like"
-                        app:tint="#BF5049"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5"
-                        android:textColor="#BF5049"
-                        android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:paddingRight="7dp"
-                        android:paddingLeft="2dp"
-                        />
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/comment"
-                        app:tint="#56B8BB"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3"
-                        android:textColor="#56B8BB"
-                        android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:paddingLeft="2dp"
-                        />
-                </LinearLayout>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EFEFEF"
-                android:layout_marginHorizontal="10dp"
-                />
-        </LinearLayout>
-
-
+            tools:listitem="@layout/item_post"
+            android:paddingBottom="80dp"
+            />
 
     </LinearLayout>
     <LinearLayout
