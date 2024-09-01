@@ -20,6 +20,9 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" />
         <activity
+            android:name=".PostDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

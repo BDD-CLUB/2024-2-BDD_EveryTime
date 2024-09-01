@@ -20,7 +20,7 @@ public class PreferenceManager {
 
     public static void saveRefreshToken(Context context, String token) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putString(ACCESS_TOKEN_KEY, token);
+        editor.putString(REFRESH_TOKEN_KEY, token);
         editor.apply();
     }
 

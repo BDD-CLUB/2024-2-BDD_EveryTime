@@ -1,7 +1,9 @@
 package com.example.toyproject.api;
 
+import com.example.toyproject.model.DeleteUserRequest;
 import com.example.toyproject.model.EmailRequest;
 import com.example.toyproject.model.LoginRequest;
+import com.example.toyproject.model.MyPageResponse;
 import com.example.toyproject.model.PostListResponse;
 import com.example.toyproject.model.PostRequestBody;
 import com.example.toyproject.model.SignUpRequest;
@@ -39,5 +41,8 @@ public interface ApiService {
     Call<Void> logOut(@Header("Authorization") String token);
 
     @GET("/api/mypage/profile")
-    Call<Void> myProfile(@Header("Authorization") String token);
+    Call<MyPageResponse> myProfile(@Header("Authorization") String token);
+
+    @DELETE("/api/mypage/delete-user")
+    Call<Boolean> deleteUser(@Header("Authorization") String token, @Body DeleteUserRequest deleteUserRequest);
 }

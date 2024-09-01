@@ -1,11 +1,15 @@
 package com.example.toyproject.ui.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.toyproject.PostDetailActivity;
 import com.example.toyproject.R;
 import com.example.toyproject.model.PostListResponse;
 import java.util.List;
@@ -46,6 +50,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         holder.titleTextView.setText(title);
         holder.contentTextView.setText(content);
+
+        // 아이템 뷰 클릭 이벤트 설정
+        holder.itemView.setOnClickListener(v -> {
+            Context context = v.getContext();
+            Intent intent = new Intent(context, PostDetailActivity.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override

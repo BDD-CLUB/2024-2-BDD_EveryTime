@@ -80,6 +80,7 @@
                             android:layout_marginBottom="12dp"
                             />
                         <TextView
+                            android:id="@+id/myPageUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="임지민"
@@ -112,6 +113,7 @@
                             android:textSize="16sp"
                             />
                         <TextView
+                            android:id="@+id/myPageUserEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2004imjimin1@gma..."
@@ -292,6 +294,7 @@
                 android:paddingHorizontal="34dp"
                 />
             <Button
+                android:id="@+id/deleteUser"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

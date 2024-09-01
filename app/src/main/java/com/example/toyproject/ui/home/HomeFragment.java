@@ -1,5 +1,6 @@
 package com.example.toyproject.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.toyproject.PostDetailActivity;
 import com.example.toyproject.R;
 import com.example.toyproject.RegisterActivity;
 import com.example.toyproject.api.ApiService;
