@@ -17,6 +17,8 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @POST("/api/mail/mail-send")
@@ -43,6 +45,9 @@ public interface ApiService {
     @GET("/api/mypage/profile")
     Call<MyPageResponse> myProfile(@Header("Authorization") String token);
 
-    @DELETE("/api/mypage/delete-user")
-    Call<Boolean> deleteUser(@Header("Authorization") String token, @Body DeleteUserRequest deleteUserRequest);
+    //@DELETE("/api/mypage/delete-user")
+    //Call<Boolean> deleteUser(@Header("Authorization") String token, @Body DeleteUserRequest deleteUserRequest);
+
+    @DELETE("/api/board/{id}")
+    Call<Void> deletePost(@Header("Authorization") String token, @Path("id") Long id);
 }

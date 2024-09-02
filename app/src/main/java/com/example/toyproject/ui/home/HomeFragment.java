@@ -58,6 +58,12 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadPosts();  // 프래그먼트가 화면에 다시 나타날 때마다 게시글 목록을 새로고침
+    }
+
     private void loadPosts() {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
