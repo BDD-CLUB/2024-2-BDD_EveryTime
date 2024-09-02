@@ -38,23 +38,35 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         // 제목이 17자를 초과할 경우, 뒤에 "..."을 추가
         String title = post.getTitle();
+        String shortTitle = title;
         if (title.length() > 17) {
-            title = title.substring(0, 17) + "...";
+            shortTitle = title.substring(0, 17) + "...";
         }
 
         // 내용이 36자를 초과할 경우, 뒤에 "..."을 추가
         String content = post.getContent();
+        String shortContent = content;
         if (content.length() > 36) {
-            content = content.substring(0, 36) + "...";
+            shortContent = content.substring(0, 36) + "...";
         }
 
-        holder.titleTextView.setText(title);
-        holder.contentTextView.setText(content);
+        holder.titleTextView.setText(shortTitle);
+        holder.contentTextView.setText(shortContent);
+
+        Long id = post.getId();
+        String authorUsername = post.getAuthorUsername();
+        String createAt = post.getCreateAt();
 
         // 아이템 뷰 클릭 이벤트 설정
         holder.itemView.setOnClickListener(v -> {
             Context context = v.getContext();
             Intent intent = new Intent(context, PostDetailActivity.class);
+            intent.putExtra("title", title);
+            intent.putExtra("content", content);
+            intent.putExtra("id", id);
+            intent.putExtra("authorUsername", authorUsername);
+            intent.putExtra("createAt", createAt);
+
             context.startActivity(intent);
         });
     }
