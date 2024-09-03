@@ -1,5 +1,6 @@
 package com.example.toyproject.api;
 
+import com.example.toyproject.model.ChangePasswordRequest;
 import com.example.toyproject.model.DeleteUserRequest;
 import com.example.toyproject.model.EmailRequest;
 import com.example.toyproject.model.LoginRequest;
@@ -15,8 +16,10 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -45,9 +48,12 @@ public interface ApiService {
     @GET("/api/mypage/profile")
     Call<MyPageResponse> myProfile(@Header("Authorization") String token);
 
-    //@DELETE("/api/mypage/delete-user")
-    //Call<Boolean> deleteUser(@Header("Authorization") String token, @Body DeleteUserRequest deleteUserRequest);
+    @HTTP(method = "DELETE", path = "/api/mypage/delete-user", hasBody = true)
+    Call<Boolean> deleteUser(@Header("Authorization") String token, @Body DeleteUserRequest deleteUserRequest);
 
     @DELETE("/api/board/{id}")
     Call<Void> deletePost(@Header("Authorization") String token, @Path("id") Long id);
+
+    @PUT("/api/mypage/changePassword")
+    Call<Boolean> changePassword(@Header("Authorization") String token, @Body ChangePasswordRequest changPasswordRequest);
 }

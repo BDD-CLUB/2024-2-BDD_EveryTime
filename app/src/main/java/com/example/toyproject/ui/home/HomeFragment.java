@@ -73,7 +73,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<PostListResponse>> call, Response<List<PostListResponse>> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "통과", Toast.LENGTH_SHORT).show();
                     List<PostListResponse> posts = response.body();
                     postAdapter = new PostAdapter(posts);
                     recyclerView.setAdapter(postAdapter);
@@ -85,7 +84,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<List<PostListResponse>> call, Throwable t) {
                 Toast.makeText(getContext(), "네트워크 오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
-                Log.e("API_ERROR", "Network request failed", t);
             }
         });
     }
