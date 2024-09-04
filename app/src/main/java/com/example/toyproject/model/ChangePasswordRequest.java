@@ -3,12 +3,12 @@ package com.example.toyproject.model;
 public class ChangePasswordRequest {
     String currentPassword;
     String newPassword;
-    String confirmPassword;
+    String confirmNewPassword;
 
     public ChangePasswordRequest(String currentPassword, String newPassword, String confirmNewPassword) {
         this.currentPassword = currentPassword;
         this.newPassword = newPassword;
-        this.confirmPassword = confirmNewPassword;
+        this.confirmNewPassword = confirmNewPassword;
     }
 
     public String getCurrentPassword() {
@@ -28,10 +28,10 @@ public class ChangePasswordRequest {
     }
 
     public String getConfirmNewPassword() {
-        return confirmPassword;
+        return confirmNewPassword;
     }
 
     public void setConfirmNewPassword(String confirmNewPassword) {
-        this.confirmPassword = confirmNewPassword;
+        this.confirmNewPassword = confirmNewPassword;
     }
 }

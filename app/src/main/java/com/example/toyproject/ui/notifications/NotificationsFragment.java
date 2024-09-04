@@ -79,7 +79,7 @@ public class NotificationsFragment extends Fragment {
                 String confirmNewPw = confirmNewPassword.getText().toString().trim();
 
                 if (!oldPw.isEmpty() && !newPw.isEmpty() && !confirmNewPw.isEmpty()) {
-                    //changePassword(oldPw, newPw, confirmNewPw);
+                    changePassword(oldPw, newPw, confirmNewPw);
                 } else {
                     Toast.makeText(getContext(), "입력란을 모두 작성해주세요.", Toast.LENGTH_SHORT).show();
                 }
@@ -101,25 +101,20 @@ public class NotificationsFragment extends Fragment {
         ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest(oldPw, newPw, confirmNewPw);
 
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-        Call<Boolean> call = apiService.changePassword("Bearer " + token, changePasswordRequest);
+        Call<Void> call = apiService.changePassword("Bearer " + token, changePasswordRequest);
 
-        call.enqueue(new Callback<Boolean>() {
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Boolean check = response.body();
-                    if (check) {
-                        Toast.makeText(getContext(), "비밀번호가 변경되었습니다.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getContext(), "다시 확인해주세요", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getContext(), "비밀번호가 변경되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "비밀번호를 변경할 수 없습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(getContext(), "네트워크 오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
             }
         });

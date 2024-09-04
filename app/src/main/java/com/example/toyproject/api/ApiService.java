@@ -55,5 +55,8 @@ public interface ApiService {
     Call<Void> deletePost(@Header("Authorization") String token, @Path("id") Long id);
 
     @PUT("/api/mypage/changePassword")
-    Call<Boolean> changePassword(@Header("Authorization") String token, @Body ChangePasswordRequest changPasswordRequest);
+    Call<Void> changePassword(@Header("Authorization") String token, @Body ChangePasswordRequest changPasswordRequest);
+
+    @GET("/api/board/{postId}/likes/count")
+    Call<Integer> getPostLikes(@Path("postId") Long postId);
 }

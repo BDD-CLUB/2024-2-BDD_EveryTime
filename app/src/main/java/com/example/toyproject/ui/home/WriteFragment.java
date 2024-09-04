@@ -1,5 +1,6 @@
 package com.example.toyproject.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,8 @@ public class WriteFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_write, container, false);
+
+
 
         ImageView backArrow = view.findViewById(R.id.backArrow);
         backArrow.setOnClickListener(v -> {

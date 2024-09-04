@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.toyproject.api.ApiService;
 import com.example.toyproject.api.RetrofitClient;
+import com.example.toyproject.ui.home.WriteFragment;
 import com.example.toyproject.utils.PreferenceManager;
 
 import java.time.LocalDateTime;
@@ -41,15 +42,19 @@ public class PostDetailActivity extends AppCompatActivity {
         String content = intent.getStringExtra("content");
         String authorUsername = intent.getStringExtra("authorUsername");
         String createAt = dateformat(intent.getStringExtra("createAt"));
+        String postLikes = intent.getStringExtra("postLikes");
 
         TextView titleView = findViewById(R.id.title);
         TextView contentView = findViewById(R.id.content);
         TextView authorUsernameView = findViewById(R.id.authorUsername);
         TextView createAtView = findViewById(R.id.createAt);
+        TextView postDetailLikesView = findViewById(R.id.postDetailLikes);
+
         titleView.setText(title);
         contentView.setText(content);
         authorUsernameView.setText(authorUsername);
         createAtView.setText(createAt);
+        postDetailLikesView.setText(postLikes);
 
         ImageView goBackButton = findViewById(R.id.goBack);
         goBackButton.setOnClickListener(v -> {
@@ -57,7 +62,7 @@ public class PostDetailActivity extends AppCompatActivity {
         });
 
         ImageView postDetailHamburger = findViewById(R.id.postDetailHamburger);
-        postDetailHamburger.setOnClickListener(v -> showPopupMenu(v, id));
+        postDetailHamburger.setOnClickListener(v -> showPopupMenu(v, id, title, content));
     }
 
     private String dateformat(String date) {
@@ -71,19 +76,23 @@ public class PostDetailActivity extends AppCompatActivity {
         return formattedDate;
     }
 
-    private void showPopupMenu(View view, Long id) {
+    private void showPopupMenu(View view, Long id, String title, String content) {
         PopupMenu popupMenu = new PopupMenu(this, view);
         popupMenu.getMenuInflater().inflate(R.menu.post_detail_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(item -> {
-            return onMenuItemClick(item, id);
+            return onMenuItemClick(item, id, title, content);
         });
         popupMenu.show();
     }
 
-    private boolean onMenuItemClick(MenuItem item, Long postId) {
+    private boolean onMenuItemClick(MenuItem item, Long postId, String title, String content) {
         int id = item.getItemId();
         if (id == R.id.action_edit) {
-            Toast.makeText(this, "편집 선택됨", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.putExtra("id", id);
+            intent.putExtra("title", title);
+            intent.putExtra("content", content);
+            startActivity(intent);
             return true;
         } else if (id == R.id.action_delete) {
             deletePost(postId);
