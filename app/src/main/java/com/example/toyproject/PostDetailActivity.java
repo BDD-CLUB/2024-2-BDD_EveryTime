@@ -89,9 +89,10 @@ public class PostDetailActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_edit) {
             Intent intent = new Intent(this, HomeActivity.class);
-            intent.putExtra("id", id);
+            intent.putExtra("id", postId);
             intent.putExtra("title", title);
             intent.putExtra("content", content);
+            intent.putExtra("NavigateTo", "edit");
             startActivity(intent);
             return true;
         } else if (id == R.id.action_delete) {

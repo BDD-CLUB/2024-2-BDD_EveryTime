@@ -59,4 +59,7 @@ public interface ApiService {
 
     @GET("/api/board/{postId}/likes/count")
     Call<Integer> getPostLikes(@Path("postId") Long postId);
+
+    @PUT("/api/board/{id}")
+    Call<Boolean> editPost(@Header("Authorization") String token, @Path("id") Long id, @Body PostRequestBody postRequestBody);
 }
