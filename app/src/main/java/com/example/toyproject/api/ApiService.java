@@ -7,6 +7,8 @@ import com.example.toyproject.model.LoginRequest;
 import com.example.toyproject.model.MyPageResponse;
 import com.example.toyproject.model.PostListResponse;
 import com.example.toyproject.model.PostRequestBody;
+import com.example.toyproject.model.SaveCommentRequest;
+import com.example.toyproject.model.SaveCommentResponse;
 import com.example.toyproject.model.SignUpRequest;
 import com.example.toyproject.model.VerifyEmailRequest;
 
@@ -62,4 +64,7 @@ public interface ApiService {
 
     @PUT("/api/board/{id}")
     Call<Boolean> editPost(@Header("Authorization") String token, @Path("id") Long id, @Body PostRequestBody postRequestBody);
+
+    @POST("/api/comment/save")
+    Call<Void> saveComment(@Header("Authorization") String token, @Body SaveCommentRequest saveCommentRequest);
 }

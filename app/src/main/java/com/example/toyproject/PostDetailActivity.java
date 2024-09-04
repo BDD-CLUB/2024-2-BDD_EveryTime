@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -17,6 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.toyproject.api.ApiService;
 import com.example.toyproject.api.RetrofitClient;
+import com.example.toyproject.model.SaveCommentRequest;
+import com.example.toyproject.model.SaveCommentResponse;
 import com.example.toyproject.ui.home.WriteFragment;
 import com.example.toyproject.utils.PreferenceManager;
 
@@ -63,6 +68,43 @@ public class PostDetailActivity extends AppCompatActivity {
 
         ImageView postDetailHamburger = findViewById(R.id.postDetailHamburger);
         postDetailHamburger.setOnClickListener(v -> showPopupMenu(v, id, title, content));
+
+        ImageView saveCommentButton = findViewById(R.id.saveCommentButton);
+        saveCommentButton.setOnClickListener(v -> {
+            saveComment(id);
+        });
+    }
+
+    private void saveComment(Long postId) {
+        EditText writeComment = findViewById(R.id.writeComment);
+        String comment = writeComment.getText().toString();
+        SaveCommentRequest saveCommentRequest = new SaveCommentRequest(postId, comment);
+
+        String token = PreferenceManager.getAccessTokenKey(this);
+
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<Void> call = apiService.saveComment("Bearer "+ token, saveCommentRequest);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    writeComment.setText("");
+                    // 키보드를 숨기기
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.hideSoftInputFromWindow(writeComment.getWindowToken(), 0);
+                    }
+                    Toast.makeText(PostDetailActivity.this, "댓글이 작성되었습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(PostDetailActivity.this, "댓글 작성에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(PostDetailActivity.this, "네트워크 오류가 발생했습니다: " + t.getMessage(), Toast.LENGTH_SHORT);
+            }
+        });
     }
 
     private String dateformat(String date) {
